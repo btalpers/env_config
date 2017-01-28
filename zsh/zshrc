@@ -1,12 +1,10 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
   export ZSH=/home/bennett/.oh-my-zsh
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
 ZSH_THEME="btalp"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -53,11 +51,10 @@ ZSH_THEME="btalp"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+
+source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -79,18 +76,26 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-export PATH="/opt/ibm/dynamite/python/bin/:/usr/local/array_vpn:$PATH"
 
-export SCRIPTS="/work/scripts"
+##
+#  Aliases
+##
 
-alias s="$SCRIPTS/sshq.sh"
-alias tel="$SCRIPTS/tel.sh"
-alias screenfetch="$SCRIPTS/screenfetch"
-alias t="$SCRIPTS/tmux_shortener.sh"
-alias forcekill="$SCRIPTS/forcekill.sh"
-alias nodes="/opt/ibm/dynamite/python/bin/slcli vs list"
+alias t='/home/bennett/scripts/tmux_s.sh'
+
+
+
+##
+#  Functions
+##
+
+function markdown () {pandoc $1 | lynx -stdin}
+function forcekill () {ps -eaf | grep $1 | awk '{print $2;}' | xargs kill -9}
+  
+## 
+#  exports
+##
+  
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/bennett/.local/bin:/home/bennett/.local/sbin:/home/bennett/install/pycharm-community-2016.1/bin"
+
+
