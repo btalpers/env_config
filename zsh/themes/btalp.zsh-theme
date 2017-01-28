@@ -39,20 +39,21 @@ local prompt_char='$(prompt_char)'
 # 033 = light blue
 # 219 = pink
 #
+#007 159
 #
 #
 #
 #
 #
 
-PROMPT="%{$FG[243]%}╭─%{$FG[230]%}%n%{$reset_color%}%{$FG[018]%}@%{$reset_color%}%{$FG[230]%}$(box_name)%{$reset_color%} %{$FG[239]%}%{$reset_color%}%{$terminfo[bold]$FG[226]%}%{$FG[052]%}[%{$FG[230]%}${current_dir}%{$FG[052]%}]%{$reset_color%}${git_info} %{$FG[239]%}using%{$FG[243]%}${ruby_env}
+PROMPT="%{$FG[228]%}╭─%{$FG[007]%}%n%{$reset_color%}%{$FG[018]%}@%{$reset_color%}%{$FG[007]%}$(box_name)%{$reset_color%} %{$FG[239]%}%{$reset_color%}%{$terminfo[bold]$FG[226]%}%{$FG[052]%}[%{$FG[007]%}${current_dir}%{$FG[052]%}]%{$reset_color%}${git_info} %{$FG[157]%}using%{$FG[228]%}${ruby_env}
 ╰─${prompt_char}%{$reset_color%} "
 
 
 
 
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" %{$FG[239]%}on%{$reset_color%} %{$fg[255]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" %{$FG[157]%}on%{$reset_color%} %{$fg[255]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$FG[202]%}✘✘✘"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$FG[040]%}✔"
