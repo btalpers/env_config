@@ -8,13 +8,16 @@ class Installable:
         if not self.installed():
             self.install()
         else:
-            print "already deployed"
+            self.update()
 
 
-    def installed(self):
+    def isInstalled(self):
         pass
 
     def install(self):
+        pass
+
+    def update(self):
         pass
 
 
@@ -37,10 +40,17 @@ class Vundle(Installable):
             "https://github.com/VundleVim/Vundle.vim.git", 
             os.path.expanduser(self.install_location)])
 
+    def update(self):
+
+        call(["git",
+              "pull",
+              "-c",
+              os.path.expanduser(self.install_location)])
         
-installations = { "Vundle" : { "install_location" : "~/.vim/bundle/Vundle.vim" } }
+installations = { "Vundle" : { "install_location" : "~/.vim/bundle/Vundle.vim" } 
+                  "RcFiles" : { "install_location" : "~/git/env_config/" } }
     
-for item in installations):
+for item in installations:
     
     obj = eval(item)
     instance = obj(**installations[item])
