@@ -81,7 +81,7 @@ source $ZSH/oh-my-zsh.sh
 #  Aliases
 ##
 
-alias t='/home/bennett/scripts/tmux_s.sh'
+#alias t='/home/bennett/scripts/tmux_s.sh'
 
 
 
@@ -91,11 +91,22 @@ alias t='/home/bennett/scripts/tmux_s.sh'
 
 function markdown () {pandoc $1 | lynx -stdin}
 function forcekill () {ps -eaf | grep $1 | awk '{print $2;}' | xargs kill -9}
-  
+function t () {
+  re='^[0-9]+$'
+  if [[ "$1" =~ "$re" ]]; then
+        tmux attach-session -d -t $1
+  fi
+  if [[ $1 == "kill" ]]; then
+        tmux kill-session -t $2
+  fi
+}
+
 ## 
 #  exports
 ##
-  
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/bennett/.local/bin:/home/bennett/.local/sbin:/home/bennett/install/pycharm-community-2016.1/bin"
 
+if [ -e ~/.work ]; then
+  source ~/.work
+fi
 

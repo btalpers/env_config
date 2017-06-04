@@ -21,6 +21,9 @@ class Installable:
         pass
 
 
+class RcFile:
+
+    def __
 class Vundle(Installable):
 
     def __init__(self, install_location=None):
