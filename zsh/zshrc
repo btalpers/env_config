@@ -1,10 +1,12 @@
-# Path to your oh-my-zsh installation.
-  export ZSH=/home/bennett/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Path to your oh-my-zsh installation.
+export ZSH=/Users/bennetttalpers/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="btalp"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -51,62 +53,35 @@ ZSH_THEME="btalp"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
+source ~/.work
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
-##
-#  Aliases
-##
-
-#alias t='/home/bennett/scripts/tmux_s.sh'
-
-
-
-##
-#  Functions
-##
+### FUNCTIONS
 
 function markdown () {pandoc $1 | lynx -stdin}
 function forcekill () {ps -eaf | grep $1 | awk '{print $2;}' | xargs kill -9}
 function t () {
   re='^[0-9]+$'
   if [[ "$1" =~ "$re" ]]; then
-        tmux attach-session -d -t $1
+    tmux attach-session -d -t $1
   fi
   if [[ $1 == "kill" ]]; then
-        tmux kill-session -t $2
+    tmux kill-session -t $2
+  fi
+  if [[ $1 == "new" ]]; then
+    tmux new -s "$2"
+  fi    
+  if [[ $1 == "ls" ]]; then
+    tmux ls
   fi
 }
+function filewith () {
+  for i in `find . -type f`
+  do
+    grep -li "$1" $i
+  done
+}
 
-## 
-#  exports
-##
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/bennett/.local/bin:/home/bennett/.local/sbin:/home/bennett/install/pycharm-community-2016.1/bin"
 
-if [ -e ~/.work ]; then
-  source ~/.work
-fi
-
+#export REPORTS_DIR="//dumpspace/reports/"
+export PATH="$PATH:/Users/bennetttalpers/local/bin:/Applications/Postgres.app/Contents/Versions/9.6/bin"
