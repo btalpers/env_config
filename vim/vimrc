@@ -1,10 +1,12 @@
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set number
 set smarttab
 set cindent
 set expandtab
 set nocompatible              " be iMproved, required
+syntax on
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -28,6 +30,7 @@ Plugin 'kien/ctrlp.vim'
 
 " Utility
 Plugin 'tpope/vim-surround'
+"Plugin 'tpope/vim-sensible'
 Plugin 'Townk/vim-autoclose'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'vim-scripts/ZoomWin'
