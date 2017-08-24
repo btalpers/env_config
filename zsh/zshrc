@@ -85,13 +85,6 @@ function filewith () {
 
 
 source $HOME/.path
-#export REPORTS_DIR="//dumpspace/reports/"
-export PATH="$PATH:$HOME/local/bin:/Applications/Postgres.app/Contents/Versions/9.6/bin:$HOME/local/apache-jmeter-3.2/bin:$HOME/eclipse/java-oxygen/eclipse"
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 export CLASSPATH="$HOME/local/apache-jmeter-3.2/lib"
 source ~/.rvm/scripts/rvm
+eval "$(rbenv init -)"
