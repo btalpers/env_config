@@ -53,8 +53,10 @@ ZSH_THEME="btalp"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+export EDITOR=vim
 source $ZSH/oh-my-zsh.sh
 source ~/.work 2>/dev/null
+source ~/.node_stuff 2>/dev/null
 
 ### FUNCTIONS
 
@@ -63,13 +65,13 @@ function forcekill () {ps -eaf | grep $1 | awk '{print $2;}' | xargs kill -9}
 function t () {
   re='^[0-9]+$'
   if [[ "$1" =~ "$re" ]]; then
-    tmux attach-session -d -t $1
+    tmux -u attach-session -t $1
   fi
   if [[ $1 == "kill" ]]; then
     tmux kill-session -t $2
   fi
   if [[ $1 == "new" ]]; then
-    tmux new -s "$2"
+    tmux -u new -s "$2"
   fi    
   if [[ $1 == "ls" ]]; then
     tmux ls
@@ -81,10 +83,15 @@ function filewith () {
     grep -li "$1" $i 2>/dev/null
   done
 }
-
-
+function fw () {
+  for i in `find . -type f`
+  do
+    grep -li "$1" $i 2>/dev/null
+  done
+}
 
 source $HOME/.path
 export CLASSPATH="$HOME/local/apache-jmeter-3.2/lib"
-source ~/.rvm/scripts/rvm
+#source ~/.rvm/scripts/rvm
 eval "$(rbenv init -)"
+
